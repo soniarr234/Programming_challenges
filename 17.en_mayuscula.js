@@ -5,20 +5,20 @@
  *   lo resuelvan directamente.
  */
 function changeUpperCase(texto){
-    let firstCharacter = ""
-    let charUpperCase = ""
-    let container = ""
-    for(let i = 0; i < texto.length; i++){ //hola que tal
-        firstCharacter = texto[0].toUpperCase()
-        if(texto[i] == " "){
-            charUpperCase = texto[i + 1].toUpperCase()
-        }
-        
-        console.log(charUpperCase)
-        
-    }
-    
+    let palabras = texto.split(' ');
+    let palabrasModificadas = [];
+    palabras.forEach(function (palabra){
+        if(palabra.length > 0){
+            let primeraLetra = palabra[0].toUpperCase()
+            let container = primeraLetra + palabra.slice(1)
+            palabrasModificadas.push(container)
+        }else{
+            palabrasModificadas.push(palabra)
+        }        
+    })
+    let textoFinal = palabrasModificadas.join(" ")
+    return textoFinal
 }
 
-let texto = "hola que tal"
+let texto = "¿hola que tal?"
 document.write(changeUpperCase(texto))
